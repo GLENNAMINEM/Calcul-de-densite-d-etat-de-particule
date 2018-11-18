@@ -9,4 +9,4 @@ Dans le cas de particule 1D ou 2D (n = n1 × n2) dont les atomes sont di
 
 Dans ce projet nous nous intéressons à la technique de Monte-Carlo Entropic Sampling pour approcher la densité d’état. L’objectif est de comparer cette technique d’approximation en terme de précision numérique et de complexité arithmétique avec la méthode de programmation dynamique employée dans [3,4]. La parallélisation de cette méthode et ces performances seront discutées au second semestre.
 
-Mots clefs : méthode de Monte Carlo, Spin crossover nano particle, programmation 
+Mots clefs : méthode de Monte Carlo, Spin crossover nano particle, programmation
