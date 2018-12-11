@@ -75,33 +75,31 @@ for ( i = 0; i< size; ++i)
 
 /*==============Calcul de la constante C' : les spin vers bas sur les côtés dans la grill=================*/
 
-	for (i = 0; i < size; ++i)
+	for (i = 1; i < size-1; ++i)
 	{
 		if(matSpin[i][0] == -1)
 			c1++;		// spin vers le bas sur la gauche
 
 		if(matSpin[i][size -1] == -1)
-			c3++;  // nbr de spin vers le bas sur la droite
-		j+(size-1);
+			c3++;  // nbr de spin vers le bas sur la haute
 	}	
 
 	
 	for (j = 0; j < size; ++j)
 		{
 			if(matSpin[0][j]== -1)
-				c2++;  //nbr de spin vers le bas sur la droite
+				c2++;  // nbr de spin vers le bas sur la droite
 
 			if(matSpin[size -1][j] == -1)
 			c4++;  // nbr de spin vers le bas sur le bas						
 		}
 
-// Récupérer le nombre de spin sur les bords
-	for(i=0;i<size;i++)
-		for(j=0;j<size;j++)
-			if(((i==0 && j==0) || (i==0 && j==size-1) || (i== size-1 && j==0) || (i==size-1 && j==size-1)) && matSpin[i][j] == -1)
-					SpinBord++;			
 
-	cP = c1+c2+c3+c4-SpinBord;			
+	cP = c1+c2+c3+c4;			
+	printf("c1 %d\n", c1);
+	printf("c3 %d\n", c3);
+	printf("c2 %d\n", c2);
+	printf("c4 %d\n", c4);
 	printf("c\' vaut %d\n", cP);
 	printf("m\' vaut %d\n", mP);
 	printf("\n");
