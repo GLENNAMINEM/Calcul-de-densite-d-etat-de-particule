@@ -63,7 +63,9 @@ void displayMatSpin(int matSpin[size][size])
 void Method_Approach(int matSpin[size][size])
 {
 	int i,j,c1=0,	c2=0, c3=0 , c4=0, SpinBord=0;
+
 	int cP=0, mP=0;
+
 
 /*===============Calcul constante m' : les spin vers le bas dans la grill============*/
 
@@ -108,7 +110,6 @@ for ( i = 0; i< size; ++i)
 			for(j = 0; j < size-2; ++j)
 				if(matSpin[i][j] != matSpin[i+1][j])
 					s+=1;
-
 
 	cP = c1+c2+c3+c4;			
 	printf("c1 %d\n", c1);
