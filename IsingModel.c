@@ -4,32 +4,8 @@
 
 int nc,nl;
 
-// function to intialize all spins to -1
-void imInitAllDown(int matSpin[nl][nc])
-{
-	for (int i=0; i<nl; i++)
-	{
-		for (int j=0; j<nc; j++)
-		{
-			matSpin[i][j] = -1;
-		}
-	}
-}
-
-// function to intialize all spins to +1
-void imInitAllUp(int matSpin[nl][nc])
-{
-	for (int i=0; i<nl; i++)
-	{
-		for (int j=0; j<nc; j++)
-		{
-			matSpin[i][j] = 1;
-		}
-	}
-}
-
 // function to intialize spins randomly
-void imInitWarm(int matSpin[nl][nc])
+void InitAleat(int matSpin[nl][nc])
 {
 	double dRan;
 	srand( time(NULL) );
@@ -38,7 +14,7 @@ void imInitWarm(int matSpin[nl][nc])
 		for (int j=0; j<nc; j++)
 		{
 			dRan = rand()%2;
-			if (dRan <= 0.6)
+			if (dRan <= 0.5)
 			{
 			matSpin[i][j] = 1;
 			}
