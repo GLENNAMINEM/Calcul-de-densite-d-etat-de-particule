@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <time.h>
 
 int nc,nl;
 
@@ -31,7 +32,7 @@ void imInitAllUp(int matSpin[nl][nc])
 void imInitWarm(int matSpin[nl][nc])
 {
 	double dRan;
-
+	srand( time(NULL) );
 	for (int i=0; i<nl; i++)
 	{
 		for (int j=0; j<nc; j++)
