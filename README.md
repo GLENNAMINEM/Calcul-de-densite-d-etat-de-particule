@@ -3,7 +3,9 @@ Calcul de densité d'état de particule pour la modélisation de nanoparticule t
 
 
 #Compiler du projet PPnum/src && PPnum/include
+  
   make IsingModel
   
 #Exécution 
+
   ./IsingModel <tailleLigne> <tailleColonne> <nombreDitérationDe_McSampling>
