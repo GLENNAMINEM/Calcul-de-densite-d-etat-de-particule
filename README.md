@@ -8,4 +8,4 @@ Calcul de densité d'état de particule pour la modélisation de nanoparticule t
   
 #Exécution 
 
-  ./IsingModel <tailleLigne> <tailleColonne> <nombreDitérationDe_McSampling>
+  ./IsingModel  <tailleLigne>  <tailleColonne>  <nombreDitérationDe_McSampling>
