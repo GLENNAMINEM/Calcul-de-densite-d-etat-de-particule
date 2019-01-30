@@ -16,7 +16,7 @@ make IsingModel
 
 ```
   
-#Exécution 
+### Exécution 
 
 ```
   ./IsingModel nbLine  nbCol  <nombreDitérationDe_McSampling>
