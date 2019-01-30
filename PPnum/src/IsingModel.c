@@ -96,28 +96,29 @@ for ( i = 0; i< nl; ++i)
 
 	cP = c1+c2+c3+c4;			
 
-	nd->m[0] = mP;
-	nd->s[1] = s;
-	nd->c[2] = cP;
+	nd.m = mP;
+	nd.s = s;
+	nd.c = cP;
 
 	return nd;
 /*===================================================*/
 }
 
-int MC_Sampling(node Z, node NewZ, int Mat[nl][nc], int nIter){
+int MontCarlo_Method(node Z, node NewZ, int Mat[nl][nc], int nIter){
 
 	int config = 0;
 	for (int i = 0; i < nIter; ++i)
 	{
 		Z = Method_Approach(Mat,Z);
 		
-		printf("z[%d %d %d]\n", Z->m[0], Z->s[1], Z->c[2]);
+		
 		
 		randomly_fill_spin(Mat);
 
 		NewZ = Method_Approach(Mat,NewZ);
 
-		if ( (Z->m[0]!=NewZ->m[0]) || (Z->s[1]!=NewZ->s[1]) || (Z->c[1]!=NewZ->c[1]))
+		//printf("NewZ[%d %d %d]\n", NewZ.m, NewZ.s, NewZ.c);
+		if ( (Z.m!=NewZ.m) || (Z.s!=NewZ.s) || (Z.c!=NewZ.c))
 		{
 			config++;
 		}
@@ -135,20 +136,17 @@ int main(int argc, char const *argv[]){
 	int Mat[nl][nc];
 	
 
-	node z = malloc(3*sizeof(struct node));
-	node newZ = malloc(3*sizeof(struct node));
+	node z;
+	node newZ;
 
 	start_t = clock();
-	Total_config = MC_Sampling(z,newZ,Mat,nb_iter);
+	Total_config = MontCarlo_Method(z,newZ,Mat,nb_iter);
 	end_t = clock();
 
 	printf("Nombre de Config = %d \n", Total_config);
 	printf("Temps d'éxecution %f\n", (double)(end_t - start_t)/CLOCKS_PER_SEC);
 	//imInitAllDown(matLattice, Rows);
 	
-	free(z);
-	free(newZ);
-
 
 	//imInitAllUp(matLattice, Rows);	
 	

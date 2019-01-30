@@ -1,11 +1,10 @@
-typedef struct node* node;
 
-struct node  
+typedef struct  
 {
-	int m[0];
-	int s[1];
-	int c[2];
-};
+	int m;
+	int s;
+	int c;
+}node ;
 
 static int nc,nl;
 
@@ -15,4 +14,4 @@ void displayMatSpin(int matSpin[nl][nc]);
 
 node Method_Approach(int matSpin[nl][nc],node nd);
 
-int MC_Sampling(node z, node newZ, int Mat[nl][nc], int nIter);
+int MontCarlo_Method(node z, node newZ, int Mat[nl][nc], int nIter);
