@@ -7,18 +7,17 @@ Language de programmation : C
 
 
 ### Compiler du projet 
-* PPnum/src : contient le fichier source .c
-* PPnum/include : contient l'entête .h
+* Ising_simulator/ 
 
   
 ```
-make IsingModel
+ gcc -g ising_simulator1.c list.c -o ising_simulator1 -l
 
 ```
   
 ### Exécution 
 
 ```
-  ./IsingModel nbLine  nbCol  <nombreDitérationDe_McSampling>
+  ./IsingModel 
 
 ```
