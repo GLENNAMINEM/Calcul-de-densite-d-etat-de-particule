@@ -140,7 +140,7 @@ void monte_carlo(int spin[N][N],ListNode *list_node,int run){
         }else {
         //printf("ai=%d aj=%d :vrai 1\n",ai,aj);
           d = Method_Approach(spin);
-          insertion(list_node, d.m,d.s,d.c);
+          //insertion(list_node, d.m,d.s,d.c);
           searchListCmdElment(list_node, d.m,d.s,d.c);
         }
     }    
@@ -179,14 +179,6 @@ int main(int argc , char** argv)
     monte_carlo(spin,list_node,run);
     //printf("Completed run #%i\n",run);
 
-
-  // output
-  //data = fopen("ising-outputZ.dat","w");
-  //for (i=0; i<N; i++)
-    //for (j=0; j<N; j++)
-      //for (go=0; go<=runs; go++)
-        //fprintf(data,"%i\t%i\t%i\t[%i]\n",new_z.m,new_z.s,new_z.c,new_z.conf);
-        //if (spinAccum[run][i][j]==1) fprintf(data,"%i\t%i\t%i\n",run,i,j);
   
 } 
  afficherListCmd(list_node);
