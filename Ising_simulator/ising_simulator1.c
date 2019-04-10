@@ -140,14 +140,14 @@ void monte_carlo(int spin[N][N],ListNode *list_node,int run){
         }else {
         //printf("ai=%d aj=%d :vrai 1\n",ai,aj);
           d = Method_Approach(spin);
-          //insertion(list_node, d.m,d.s,d.c);
+          insertion(list_node, d.m,d.s,d.c);
           searchListCmdElment(list_node, d.m,d.s,d.c);
         }
     }    
     else {
     //printf("ai=%d aj=%d :vrai 2\n",ai,aj);
          d = Method_Approach(spin);
-              insertion(list_node, d.m,d.s,d.c);
+              //insertion(list_node, d.m,d.s,d.c);
               searchListCmdElment(list_node, d.m,d.s,d.c);
      }
 }
