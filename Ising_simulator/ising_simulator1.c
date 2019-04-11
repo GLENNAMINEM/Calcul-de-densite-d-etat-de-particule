@@ -164,13 +164,6 @@ void monte_carlo(int spin[N][N],ListNode *list_node,int run){
     
     if (H<=0)
     {
-       //r = drand48();
-       //if (r>exp(-H)){
-        //printf("ai=%d aj=%d faux\n",ai,aj);
-        
-    	//printf("ai = %d et aj = %d à l'itération %d \n", ai, aj, run);
-        //}else {
-        //printf("ai=%d aj=%d :vrai 1\n",ai,aj);
           d = Method_Approach(spin);
           //insertion(list_node, d.m,d.s,d.c);
           searchListCmdElment(list_node, d.m,d.s,d.c);
