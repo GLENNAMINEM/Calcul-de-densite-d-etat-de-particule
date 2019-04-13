@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #define N 2
-#define runs 100 // number of Monte Carlo simulations
+//#define runs 100 // number of Monte Carlo simulations
 
  int cnt=0;
 
