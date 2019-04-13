@@ -12,10 +12,12 @@ int main(int argc, char**argv)
 {
 
 
-  int i,j,spin[N][N];
+  int i,j,spin[N][N],runs;
   int ai,aj;
   double en_old,en_new,H,r;
   int* tab = NULL;
+  
+	runs = atoi(argv[1]);
 
   tab=malloc(sizeof(int)*runs*4);
 
@@ -29,15 +31,15 @@ int main(int argc, char**argv)
 
     }
   }
-
+  	 
 
 
   for(int run = 0; run<runs; run++)
   {
 
     monte_carlo(spin,tab,run);
-
-  }
+  
+  } 
 
    display(tab,cnt);
 
