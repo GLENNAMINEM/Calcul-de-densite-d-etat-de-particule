@@ -8,17 +8,15 @@ Language de programmation : C
 
 
 ### Compiler du projet 
-* Ising_simulator/ 
-
   
 ```
- gcc -g ising_simulator1.c list.c -o ising_simulator1 -l
+ gcc -g carlo_ising.c -o main -lm
 
 ```
   
 ### Exécution 
 
 ```
-  ./IsingModel 
+  ./main <nb_Iter> 
 
 ```
