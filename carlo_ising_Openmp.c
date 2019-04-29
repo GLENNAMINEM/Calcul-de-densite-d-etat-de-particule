@@ -1,7 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
+#include <stdbool.h>
 #include <sys/time.h>
+#include <time.h>
 #include <omp.h>
 #include "includeOpen.h"
 
@@ -20,21 +22,27 @@ double get_time() {
 int main(int argc, char**argv)
 {
 
-  double start,stop;
+  int n=0, size = atoi(argv[1]);
+  int i,j,spin[size][size],runs;
 
-  double cpu_time_used; 
+  int ai,aj,T; // T est la température 
 
-  int i,j,spin[N][N],runs;
-  int ai,aj;
-  double en_old,en_new,H,r;
   int* tab = NULL;
   
-  
 
-	runs = atoi(argv[1]);
+  double start,stop;
+  double cpu_time_used; 
+  double en_old,en_new,H,r;
+  double beta;
 
-  tab=malloc(sizeof(int)*runs*4);
+	runs = atoi(argv[2]);
+  T = atoi(argv[3]);
 
+  int num_du_thread = 16;
+
+  tab=malloc(pow(2,N*N)*sizeof(int));
+
+  srand( time(NULL) );
 
   // initial fill
   for (i=0; i<N; i++)
@@ -45,16 +53,19 @@ int main(int argc, char**argv)
 
     }
   }
+
+  // K Valeur de BoltZmann wikipedia
+  beta = 1/((1.38064852*pow(10,-23))*T);
   	 
   start = get_time();
 
-  #pragma omp for schedule(dynamic,1000)
-	  for(int run = 0; run<runs; run++)
-	  {
+  #pragma omp parallel for num_threads(num_du_thread)
+    for(int run = 0; run<runs; run++)
+    {
+      monte_carlo(spin,tab,run,beta);
+    }
+  
 
-	    monte_carlo(spin,tab,run);
-	  	
-	  } 
   stop = get_time();  
 
   cpu_time_used = stop -start;
@@ -63,8 +74,10 @@ int main(int argc, char**argv)
 
   ising_output(tab,cnt);
 
-   printf("Time excution Mont Carlo %f\n", cpu_time_used);
+  printf("cnt = %d\n", cnt);
 
+   printf("Time excution Mont Carlo %f\n", cpu_time_used);
+   
    free(tab);
 
   return 0;
