@@ -12,7 +12,11 @@ Language de programmation : C
  gcc -o mainOmpPar carlo_ising_Openmp.c -fopenmp -lm
 
 ```
-  
+
+```
+export OMP_NUM_THREADS = <nb_thread> nb_thread max 16/proc
+
+```
 ### Exécution 
 
 ```
