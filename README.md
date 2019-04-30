@@ -16,6 +16,6 @@ Language de programmation : C
 ### Exécution 
 
 ```
-  ../mainOmpPar <taille de la mtrice> <nb_iter de MC> <température>
+  ./mainOmpPar <taille de la mtrice> <nb_iter de MC> <température>
 
 ```
