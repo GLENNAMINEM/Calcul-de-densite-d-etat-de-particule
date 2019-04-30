@@ -38,7 +38,7 @@ int main(int argc, char**argv)
 	runs = atoi(argv[2]);
   T = atoi(argv[3]);
 
-  int num_du_thread = 16;
+//  int num_du_thread = 4;
 
   tab=malloc(pow(2,N*N)*sizeof(int));
 
@@ -50,8 +50,9 @@ int main(int argc, char**argv)
     for (j=0; j<N; j++)
     {
       spin[i][j] = updown();
-
+      printf("%d", spin[i][j]);
     }
+    printf("\n");
   }
 
   // K Valeur de BoltZmann wikipedia
@@ -59,7 +60,7 @@ int main(int argc, char**argv)
   	 
   start = omp_get_wtime( );
 
-  #pragma omp parallel for num_threads(num_du_thread)
+  #pragma omp parallel for schedule(dynamic,100) 
     for(int run = 0; run<runs; run++)
     {
       monte_carlo(spin,tab,run,beta);
