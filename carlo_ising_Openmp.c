@@ -57,7 +57,7 @@ int main(int argc, char**argv)
   // K Valeur de BoltZmann wikipedia
   beta = 1/((1.38064852*pow(10,-23))*T);
   	 
-  start = get_time();
+  start = omp_get_wtime( );
 
   #pragma omp parallel for num_threads(num_du_thread)
     for(int run = 0; run<runs; run++)
@@ -66,7 +66,7 @@ int main(int argc, char**argv)
     }
   
 
-  stop = get_time();  
+  stop = omp_get_wtime( );  
 
   cpu_time_used = stop -start;
   
