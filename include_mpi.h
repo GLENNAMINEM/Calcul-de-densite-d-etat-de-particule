@@ -169,8 +169,9 @@ double energy(int spin[N][N])
 
 for ( i = 0; i< N; ++i)
   for(j=0; j< N; ++j)
-    if(matSpin[i][j] == -1)
-      mP++;
+	  mP+=matSpin[i][j];
+    /*if(matSpin[i][j] == -1)
+      mP++;*/
 
 
 /*==============Calcul de la constante C' : les spin vers bas sur les côtés dans la grill=================*/
