@@ -46,17 +46,24 @@ void add_bloc(int * tab,int a,int b, int c){
 }
 //display array
 
-void display(int* tab, int cnttt){
+void ising_output(int* tab, int cnttt){
 
-     int j;
+  int j;
+  long long Z = 0;
 
-for(j=0;j<cnttt;j=j+4){
+  FILE *data;
 
-  printf("m=%d c=%d s=%d z=%d\n",tab[j],tab[1+j],tab[2+j],tab[3+j]);
+  data = fopen("ising-output_Par4.dat","w");
 
-  	}
+  for(j=0;j<cnttt;j=j+4){
 
- }
+    fprintf(data,"%i\t%i\t%i\t%i\n",tab[j],tab[1+j],tab[2+j],tab[3+j]);
+    //printf("%llu\n",Z+=tab[3+j]);
+  }
+
+  fclose(data);
+}
+
 
 //fusion to array
 
@@ -76,16 +83,13 @@ for(j=0;j<cnttt;j=j+4){
  }
 
 // returns up (1) or down (-1)
-int updown(int rang)
+int updown()
 {
-  int t=clock();
   double randomNumber;
-  srand(rang*t);
-  randomNumber = (rand()%N)/(N-1);
+  randomNumber = rand()%2;
   if (randomNumber < 0.5) return (1);
   else return -1;
 }
-
 
 // Calculate energy
 double energy(int spin[N][N])
@@ -109,66 +113,57 @@ double energy(int spin[N][N])
 //Méthode (type node) qui nous permet de retourner un noeud de "z", ex: z[m][s][c]
  int* Method_Approach(int matSpin[N][N])
 {
-
-  int *t=malloc(sizeof(int)*3);
-  int i,j,c1=0, c2=0, c3=0 , c4=0;
-  int cP=0, mP=0;
-
-/*===============Calcul constante m' : les spin vers le bas dans la grill============*/
-
-for ( i = 0; i< N; ++i)
-  for(j=0; j< N; ++j)
-    if(matSpin[i][j] == -1)
-      mP++;
-
-
-/*==============Calcul de la constante C' : les spin vers bas sur les côtés dans la grill=================*/
-
-  for (i = 1; i < N-1; ++i)
-  {
-    if(matSpin[i][0] == -1)
-      c1++;   // spin vers le bas sur la gauche
-
-    if(matSpin[i][N-1] == -1)
-      c3++;  // nbr de spin vers le bas sur la haute
-  }
-
-
-  for (j = 0; j < N; ++j)
-    {
-      if(matSpin[0][j]== -1)
-        c2++;  // nbr de spin vers le bas sur la droite
-
-      if(matSpin[N -1][j] == -1)
-      c4++;  // nbr de spin vers le bas sur le bas
-    }
-
-
-/*==================Calcul de la constante S' : le nombre de paires d'atomes adjacents ayant différentes spins========*/
-    int s = 0;
-
-    for (i = 0; i < N; ++i){
-      for(j = 0; j < N; ++j){
-
-        if(matSpin[i][j] != matSpin[i][j+1] && j != N-1  ){  //voisin à droite
-          s++;
-        }
-	if(matSpin[i][j] != matSpin[i+1][j] && i != N-1){ //voisin en bas
-          s++;
-	}
-      }
-    }
-
-
-
-
-  cP = c1+c2+c3+c4;
-
  
-  t[0]=mP;t[1]=cP;t[2]=s;
-  
+   int *t=malloc(sizeof(int)*3);
+    int i,j; 
+    int cP=0, mP=0;
 
-  return t;
+  /*===============Calcul constante m : la somme des spins de la grill============*/
+
+  for ( i = 0; i< N; ++i)
+    for(j=0; j< N; ++j)
+      mP+=matSpin[i][j];
+
+
+  /*==============Calcul de la constante C : la somme des spins vers bas sur les côtés dans la grill=================*/
+
+    for (i = 1; i < N-1; ++i)
+    {
+      //if(matSpin[i-1][0] == -1)
+        cP+=matSpin[i-1][0];   // spin vers le bas sur la gauche
+
+      //if(matSpin[i][N-1] == -1)
+        cP+=matSpin[i][N-1];  // nbr de spin vers le bas sur la haute
+
+      //if(matSpin[0][i]== -1)
+        cP+=matSpin[0][i];  // nbr de spin vers le bas sur la droite
+
+      //if(matSpin[N -1][i-1] == -1)
+        cP+=matSpin[N -1][i-1];  // nbr de spin vers le bas sur le bas
+    }
+
+
+  /*==================Calcul de la constante S : la somme des spins paires d'atomes adjacents ayant différentes sens========*/
+      int s = 0;
+
+      for (i = 0; i < N; ++i){
+        for(j = 0; j < N; ++j){
+
+          if(matSpin[i][j] != matSpin[i][j+1] && j != N-1  ){  //voisin à droite
+            s+=matSpin[i][j];
+          }
+      if(matSpin[i][j] != matSpin[i+1][j] && i != N-1){ //voisin en bas
+            s+=matSpin[i][j];
+      }
+        }
+      }
+
+
+
+    t[0]=mP;t[1]=cP;t[2]=s;
+
+
+    return t;
 }
 
 // METROPOLIS MONTE_CARLO
