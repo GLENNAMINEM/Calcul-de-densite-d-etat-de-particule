@@ -20,6 +20,6 @@ export OMP_NUM_THREADS = <nb_thread> nb_thread max 16/proc
 ### Exécution 
 
 ```
-  ./mainOmpPar <taille de la mtrice> <nb_iter de MC> <température>
+  ./mainOmpPar <nb_iter de MC> <température>
 
 ```
