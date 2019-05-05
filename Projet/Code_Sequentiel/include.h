@@ -154,7 +154,7 @@ for ( i = 0; i< N; ++i)
 
 // METROPOLIS MONTE_CARLO
 
-void monte_carlo(int spin[N][N],int* tab,int run){
+void monte_carlo(int spin[N][N],int* tab,int run, double beta){
 
   int ai,aj;
   double en_old,en_new,H,r;
@@ -179,7 +179,7 @@ void monte_carlo(int spin[N][N],int* tab,int run){
       if (H>0)
       {
          r = (rand()%N)/(N-1);
-         if (r<exp(-H)){
+         if (r<exp(-H*beta)){
 		 spin[ai][aj] = -spin[ai][aj];  // Undo flip
 
          }else {
