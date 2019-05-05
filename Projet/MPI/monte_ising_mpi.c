@@ -60,7 +60,7 @@ int main(int argc, char**argv)
 
     Z += tab[e] ; 
    } 
-   if ( Z ==  pow(2 , N*N) ) break ;
+   if ( Z ==  pow(2 , N*N)  / size ) break ;
  
     else monte_carlo(spin,tab,run,rank,&cnt);
 
