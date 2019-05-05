@@ -179,7 +179,7 @@ void monte_carlo(int spin[N][N],int* tab,int run){
       if (H>0)
       {
          r = (rand()%N)/(N-1);
-         if (r>exp(-H)){
+         if (r<exp(-H)){
 		 spin[ai][aj] = -spin[ai][aj];  // Undo flip
 
          }else {
