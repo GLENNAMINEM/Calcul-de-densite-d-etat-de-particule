@@ -252,12 +252,13 @@ for ( i = 0; i< N; ++i)
 
 void monte_carlo(int spin[N][N],int* tab,int run,int rang,int *cnt){
 
-  int ai,aj;
+  int ai,aj,T,B;
   time_t t=time(NULL) ;
   float tt1,tt2;
   double en_old,en_new,H,r;
   int *ta=malloc(sizeof(int)*3);
   
+ T=295; B=
 	//srand48(5123*rang+t);
       //srand(t*rang+t);
 
