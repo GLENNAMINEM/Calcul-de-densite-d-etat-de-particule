@@ -27,9 +27,11 @@ int main(int argc, char**argv)
     runs = atoi(argv[1]);
     time_t t = time(NULL);
     int run,z=0,cnt=0;
-    int *buf=NULL;buf= (int*)malloc(sizeof(int)*runs*4*(size-1));
+    int *buf=NULL;
     int* tab = NULL;
     double t1,t2;
+	
+    buf= (int*)malloc(sizeof(int)*runs*4*(size-1));	
     tab = (int*)malloc(sizeof(int)*runs*4+1);
 
 
