@@ -1,5 +1,5 @@
  compilation: mpicc monte_ising_mpi.c -lm
- execution : mpiexec -n nb_pro ./a.out nb_iterations
+ execution : mpiexec -n nb_pro ./a.out <nb_iterations> <température>
 
 
  gnuplot>
