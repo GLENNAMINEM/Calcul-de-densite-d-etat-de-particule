@@ -258,7 +258,9 @@ void monte_carlo(int spin[N][N],int* tab,int run,int rang,int *cnt){
   double en_old,en_new,H,r;
   int *ta=malloc(sizeof(int)*3);
   
- T=295; B=
+  T = 295; 
+  B = 1/((1.38064852*pow(10,-23))*T);
+	
 	//srand48(5123*rang+t);
       //srand(t*rang+t);
 
@@ -279,7 +281,7 @@ void monte_carlo(int spin[N][N],int* tab,int run,int rang,int *cnt){
       if (H>0)
       {
             r = (rand()%N)/(N-1);  
-            if (r>exp(-H)){
+            if (r>exp(-H * B)){
 		 spin[ai][aj] = -spin[ai][aj];  // Undo flip
 		//printf("pas take\n");
             }else {
