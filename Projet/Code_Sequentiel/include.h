@@ -1,7 +1,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#define N 2
+#define N 5
 //#define runs 100 // number of Monte Carlo simulations
 
  int cnt=0;
@@ -179,7 +179,7 @@ void monte_carlo(int spin[N][N],int* tab,int run, double beta){
       if (H>0)
       {
          r = (rand()%N)/(N-1);
-         if (r<exp(-H*beta)){
+         if (r>exp(-H*beta)){
 		 spin[ai][aj] = -spin[ai][aj];  // Undo flip
 
          }else {
