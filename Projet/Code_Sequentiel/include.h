@@ -9,7 +9,7 @@
 
 //add new configuration in array
 
-void add_bloc(int * tab,int a,int b, int c){
+void add_config(int * tab,int a,int b, int c){
 
 
  int faux=0;
@@ -62,14 +62,14 @@ for(j=0;j<cnttt;j=j+4){
 int updown()
 {
   double randomNumber;
-  randomNumber = (rand()%N)/(N-1);
+  randomNumber = rand()%2;
   if (randomNumber < 0.5) return (1);
-  else return 1;
+  else return -1;
 }
 
 
 // Calculate energy
-double energy(int spin[N][N])
+double ith_energy(int spin[N][N])
 {
   int i,j;
   double E=0.;
@@ -88,7 +88,7 @@ double energy(int spin[N][N])
 
 
 //Méthode (type node) qui nous permet de retourner un noeud de "z", ex: z[m][s][c]
- int* Method_Approach(int matSpin[N][N])
+ int* Calcul_conf(int matSpin[N][N])
 {
 
   int *t=malloc(sizeof(int)*3);
@@ -166,12 +166,12 @@ void monte_carlo(int spin[N][N],int* tab,int run, double beta){
 
         spin[ai][aj];
 
-       en_old = energy(spin);  // energy before flip
+       en_old = ith_energy(spin);  // energy before flip
 
 
       spin[ai][aj] = -spin[ai][aj];// flip
 
-      en_new = energy(spin);  // energy after flip
+      en_new = ith_energy(spin);  // energy after flip
 
       H = en_new - en_old;    // difference in energy
 
@@ -183,12 +183,12 @@ void monte_carlo(int spin[N][N],int* tab,int run, double beta){
 		 spin[ai][aj] = -spin[ai][aj];  // Undo flip
 
          }else {
-		ta=Method_Approach(spin);
-		add_bloc(tab,ta[0],ta[1],ta[2]);
+		ta=Calcul_conf(spin);
+		add_config(tab,ta[0],ta[1],ta[2]);
 		}
       }else {
-		ta=Method_Approach(spin);
-		add_bloc(tab,ta[0],ta[1],ta[2]);
+		ta=Calcul_conf(spin);
+		add_config(tab,ta[0],ta[1],ta[2]);
      }
 
  free(ta);
