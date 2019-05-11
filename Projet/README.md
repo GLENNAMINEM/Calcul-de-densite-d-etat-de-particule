@@ -2,7 +2,7 @@
 # Sujet:
 Calcul de densité d'état de particule pour la modélisation de nanoparticule transition de spin.
 
-## Implementation Parrallèle avec OpenMP du modèle Ising:
+## Implementation Parrallèle avec OpenMP et MPI du modèle Ising:
 Language de programmation : C 
 
 
